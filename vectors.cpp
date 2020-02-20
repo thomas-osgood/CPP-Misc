@@ -116,9 +116,9 @@ int main(void) {
 	clock_t start, end;
 
 	Person test;
-	test.firstName = "Thomas";
-	test.lastName = "Osgood";
-	test.age = 30;
+	test.firstName = "John";
+	test.lastName = "Smith";
+	test.age = 40;
 
 	people.push_back(test);
 
