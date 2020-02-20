@@ -9,11 +9,26 @@
  */
 
 /* Required Includes */
+#include <ctime>
 #include <iostream>
 #include <vector>
 
+/* Declare MACROs */
+#define KILO 1024
+#define BYTE 8
+
+/* Function Prototypes */
+void printChar(char c, int n);
+
 /* Declare Which Namespace To Use */
 using namespace std;
+
+/* Struct Definitions */
+typedef struct {
+	string firstName;
+	string lastName;
+	int age;
+} Person;
 
 /* Templates */
 template <typename T>
@@ -34,6 +49,28 @@ void printVector(T vec) {
 	}
 	return;
 }
+
+/*
+ * Function Name: printVector
+ * Description:
+ * 	Print info from Person vector.
+ * Input(s):
+ * 	vec - vector to print.
+ * Return(s):
+ * 	None
+ */
+void printVector(vector<Person> vec) {
+	std::vector<Person>::iterator i;
+	int a = 0;
+	for (i = vec.begin(); i != vec.end(); i++, a++) {
+		cout << "Person " << a+1 << " : " << endl;
+		printChar('-',10);
+		cout << vec[a].firstName << " " << vec[a].lastName << endl;
+		cout << vec[a].age << " years old" << endl;
+	}
+	return;
+}
+
 
 template <typename T>
 /*
@@ -59,9 +96,6 @@ bool inVector(T v, T k) {
 	return false;
 }
 
-/* Function Prototypes */
-void printChar(char c, int n);
-
 /*
  * Function Name: Main
  * Description:
@@ -76,9 +110,21 @@ int main(void) {
 	/* Declare & Initialize Local Variables */
 	vector<int> grades;
 	vector<string> names;
+	vector<Person> people;
 	int i = 0;
 	int vec_size = 10;
+	clock_t start, end;
 
+	Person test;
+	test.firstName = "Thomas";
+	test.lastName = "Osgood";
+	test.age = 30;
+
+	people.push_back(test);
+
+	/* begin timing */
+	start = clock(); 
+	
 	/* Build Grades Vector */
 	cout << "[*] Filling Up Grades VECTOR" << endl;
 	printChar('-',30);
@@ -104,6 +150,17 @@ int main(void) {
 	printChar('-',30);
 	printVector(names);
 
+	cout << endl << "[*] Printing People VECTOR" << endl;
+	printChar('-',30);
+	cout << endl;
+	printVector(people);
+	
+	/* end timing */
+	end = clock(); 
+
+	/* Display Timing Result */
+	cout << endl << "Program took " << difftime(end,start)/CLOCKS_PER_SEC << " seconds to execute." << endl;
+	
 	return 0;
 }
 
