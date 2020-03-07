@@ -12,6 +12,12 @@
     
     And so on...
 */
+#include <iostream>
+#include <vector>
+#include <string>
+#include <sstream>
+
+using namespace std;
 
 std::string likes(const std::vector<std::string> &names)
 {
@@ -53,4 +59,15 @@ std::string likes(const std::vector<std::string> &names)
     
     returnVal = sStream.str();
     return returnVal;
+}
+
+// Main Function For Testing 'likes'
+int main(void) {
+	vector<string> names;
+	names.push_back("Bob");
+	names.push_back("Amanda");
+
+	cout << likes(names) << endl;
+
+	return 0;
 }
