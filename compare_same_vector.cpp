@@ -92,7 +92,6 @@ bool Same::comp(vector<int> a, vector<int> b) {
                 break;
             }
         }
-        cout << endl;
         
         /* Set Return Value */
         if (stillGood) {
